@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="Free Finance - Ajukan pinjaman dengan jaminan barang elektronik. Tim kami yang akan menilai harga pasar dan menentukan nilai pinjaman 50% dari harga pasar.">
+<meta name="description" content="Free Finance - Ajukan pinjaman dengan jaminan barang elektronik. Tim kami yang menilai harga pasar dan menentukan nilai pinjaman 50% dari harga pasar. Melayani Semarang Raya.">
 <meta name="theme-color" content="#0B5E42">
 <title>Free Finance | Ajukan Pinjaman Jaminan Elektronik</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
     --warning-bg: #FFFBEB;
     --warning-border: #FDE68A;
     --warning-text: #B45309;
-    --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+    --shadow-card: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
     --radius-md: 12px;
     --radius-lg: 20px;
     --radius-xl: 28px;
@@ -45,6 +45,7 @@
     color: var(--gray-800);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
   
   .container {
@@ -62,7 +63,118 @@
     .container { padding: 0 20px; }
   }
   
-  /* Typography */
+  /* ========== SPLASH SCREEN ========== */
+  #splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--primary-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.7s;
+  }
+  #splash.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .splash-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .sp {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(45, 212, 191, 0.15);
+    animation: spRise linear infinite;
+  }
+  @keyframes spRise {
+    0% { transform: translateY(0) scale(1); opacity: 0.2; }
+    100% { transform: translateY(-110vh) scale(0.4); opacity: 0; }
+  }
+  .splash-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: splashIn 0.8s ease 0.4s forwards;
+  }
+  .splash-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--accent), var(--primary-light));
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.8rem;
+    color: white;
+    box-shadow: 0 12px 28px rgba(20, 184, 166, 0.3);
+  }
+  .splash-wordmark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: white;
+    letter-spacing: -0.3px;
+  }
+  .splash-wordmark span { color: var(--accent); }
+  .splash-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.6);
+    text-transform: uppercase;
+    opacity: 0;
+    animation: splashUp 0.6s ease 0.8s forwards;
+  }
+  .splash-track {
+    width: 180px;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    opacity: 0;
+    animation: splashUp 0.5s ease 1s forwards;
+  }
+  .splash-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--primary-light));
+    width: 0%;
+    animation: fillBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) 1.1s forwards;
+  }
+  @keyframes splashIn { to { opacity: 1; transform: translateY(0); } }
+  @keyframes splashUp { to { opacity: 1; transform: translateY(0); } }
+  @keyframes fillBar { to { width: 100%; } }
+  
+  /* Main content fade */
+  #main-content {
+    opacity: 0;
+    animation: mainFade 0.8s ease 2.4s forwards;
+  }
+  @keyframes mainFade { to { opacity: 1; } }
+  
+  /* ========== REVEAL ANIMATION ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .delay-1 { transition-delay: 0.08s; }
+  .delay-2 { transition-delay: 0.16s; }
+  .delay-3 { transition-delay: 0.24s; }
+  .delay-4 { transition-delay: 0.32s; }
+  
+  /* ========== TYPOGRAPHY ========== */
   h1, h2, .serif {
     font-family: 'DM Serif Display', serif;
     font-weight: 400;
@@ -72,7 +184,7 @@
   h2 { font-size: clamp(1.75rem, 4.5vw, 2.25rem); line-height: 1.25; }
   h3 { font-size: 1.125rem; font-weight: 600; }
   
-  /* Buttons */
+  /* ========== BUTTONS ========== */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -93,15 +205,15 @@
     color: white;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
-  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+  .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(11,94,66,0.2); }
   .btn-outline {
     background: transparent;
     border: 1.5px solid var(--gray-300);
     color: var(--gray-700);
   }
-  .btn-outline:hover { border-color: var(--primary); background: rgba(11,94,66,0.04); }
+  .btn-outline:hover { border-color: var(--primary); background: rgba(11,94,66,0.04); transform: translateY(-1px); }
   
-  /* Navigation */
+  /* ========== NAVIGATION ========== */
   .nav {
     position: fixed;
     top: 0;
@@ -157,7 +269,7 @@
   .btn-nav { padding: 8px 20px; }
   @media (max-width: 768px) { .nav-links { display: none; } }
   
-  /* Hero */
+  /* ========== HERO ========== */
   .hero {
     padding-top: 120px;
     padding-bottom: 64px;
@@ -201,6 +313,16 @@
     padding: 16px 20px;
     margin: 24px 0;
     border-left: 3px solid var(--primary);
+  }
+  .percentage-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-right: 8px;
   }
   .hero-stats {
     display: flex;
@@ -253,7 +375,7 @@
     .hero-card { max-width: 400px; margin: 0 auto; }
   }
   
-  /* Section Headers */
+  /* ========== SECTION HEADERS ========== */
   .section-header { text-align: center; max-width: 700px; margin: 0 auto 48px; }
   .section-tag {
     font-size: 0.7rem;
@@ -266,7 +388,7 @@
   .section-title { color: var(--gray-900); margin-bottom: 16px; }
   .section-sub { color: var(--gray-600); font-size: 1rem; }
   
-  /* Steps */
+  /* ========== STEPS ========== */
   .steps-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -277,8 +399,9 @@
     border-radius: var(--radius-lg);
     padding: 28px 20px;
     border: 1px solid var(--gray-200);
-    transition: all 0.2s;
+    transition: all 0.3s ease;
   }
+  .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); border-color: var(--primary-light); }
   .step-number {
     font-family: 'DM Serif Display', serif;
     font-size: 2.5rem;
@@ -291,7 +414,7 @@
   @media (max-width: 900px) { .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
   @media (max-width: 500px) { .steps-grid { grid-template-columns: 1fr; } }
   
-  /* Info Cards */
+  /* ========== INFO CARDS ========== */
   .info-card {
     background: var(--gray-100);
     border-radius: var(--radius-lg);
@@ -311,18 +434,8 @@
     gap: 8px;
   }
   .info-text { font-size: 0.875rem; color: var(--gray-700); line-height: 1.6; }
-  .percentage-badge {
-    display: inline-block;
-    background: var(--primary);
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 30px;
-    margin-right: 8px;
-  }
   
-  /* Collateral Grid */
+  /* ========== COLLATERAL GRID ========== */
   .collateral-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -337,13 +450,13 @@
     text-align: center;
     transition: all 0.2s;
   }
-  .collateral-card:hover { border-color: var(--primary-light); box-shadow: var(--shadow-card); }
+  .collateral-card:hover { border-color: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-card); }
   .collateral-icon { font-size: 1.8rem; margin-bottom: 10px; }
   .collateral-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; }
   .collateral-note { font-size: 0.65rem; color: var(--gray-500); margin-top: 6px; }
   @media (max-width: 768px) { .collateral-grid { grid-template-columns: repeat(2, 1fr); } }
   
-  /* Form */
+  /* ========== FORM ========== */
   .form-wrapper {
     max-width: 720px;
     margin: 0 auto;
@@ -420,13 +533,13 @@
     font-size: 0.9375rem;
     gap: 10px;
   }
-  .btn-wa:hover { background: #20b859; transform: none; }
+  .btn-wa:hover { background: #20b859; transform: translateY(-1px); }
   @media (max-width: 640px) {
     .form-wrapper { padding: 24px; }
     .form-row { grid-template-columns: 1fr; gap: 16px; }
   }
   
-  /* Features */
+  /* ========== FEATURES ========== */
   .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -437,16 +550,18 @@
     border-radius: var(--radius-lg);
     padding: 28px;
     border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
   }
+  .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); border-color: var(--primary-light); }
   .feature-icon { font-size: 1.75rem; margin-bottom: 16px; }
   .feature-card h3 { font-size: 1rem; margin-bottom: 8px; }
   .feature-card p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.5; }
   @media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; gap: 16px; } }
   
-  /* Footer */
+  /* ========== FOOTER ========== */
   footer {
     background: var(--gray-900);
-    color: var(--gray-400);
+    color: var(--gray-300);
     padding: 48px 0 32px;
   }
   .footer-grid {
@@ -462,10 +577,10 @@
     margin-bottom: 12px;
     display: inline-block;
   }
-  .footer-desc { font-size: 0.8rem; line-height: 1.6; margin-top: 12px; }
+  .footer-desc { font-size: 0.85rem; line-height: 1.6; color: var(--gray-400); margin-top: 12px; }
   .footer-col h4 {
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
     margin-bottom: 16px;
   }
@@ -473,267 +588,314 @@
     display: block;
     color: var(--gray-400);
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     margin-bottom: 10px;
     transition: color 0.2s;
   }
-  .footer-col a:hover { color: white; }
+  .footer-col a:hover { color: var(--accent); }
+  .footer-col span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    margin-bottom: 8px;
+  }
   .footer-bottom {
     border-top: 1px solid var(--gray-800);
     padding-top: 28px;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--gray-400);
   }
   .disclaimer {
-    background: rgba(20, 184, 166, 0.08);
+    background: rgba(20, 184, 166, 0.1);
     border-radius: var(--radius-md);
-    padding: 12px 16px;
+    padding: 14px 18px;
     margin-bottom: 32px;
-    font-size: 0.7rem;
+    font-size: 0.75rem;
     text-align: center;
+    color: var(--gray-300);
+    border-left: 3px solid var(--accent);
   }
   @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
   
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
   .mt-4 { margin-top: 16px; }
   .text-center { text-align: center; }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a href="#" class="logo"><div class="logo-mark">₣</div>Free Finance</a>
-    <ul class="nav-links">
-      <li><a href="#how-it-works">Cara Kerja</a></li>
-      <li><a href="#collateral">Jaminan</a></li>
-      <li><a href="#apply">Ajukan</a></li>
-    </ul>
-    <a href="#apply" class="btn btn-primary btn-nav">Ajukan Pinjaman</a>
+<!-- SPLASH SCREEN -->
+<div id="splash">
+  <div class="splash-particles" id="splashParticles"></div>
+  <div class="splash-logo">
+    <div class="splash-icon">₣</div>
+    <div class="splash-wordmark">Free <span>Finance</span></div>
   </div>
-</nav>
+  <div class="splash-sub">Solusi Pinjaman Jaminan Elektronik</div>
+  <div class="splash-track"><div class="splash-fill"></div></div>
+</div>
 
-<!-- Hero Section -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-badge reveal">
-          Ajukan Pinjaman Jaminan Elektronik
-          <span class="location-badge">Semarang Raya</span>
-        </div>
-        <h1 class="hero-title reveal delay-1">Ajukan Pinjaman,<br>Kami yang <em>Menilai</em> Harga</h1>
-        <p class="hero-desc reveal delay-2">Anda tentukan barang jaminan dan dana yang dibutuhkan. Tim kami akan menilai harga pasar barang Anda dan menentukan nilai pinjaman sebesar <strong>50% dari harga pasar</strong>.</p>
-        <div class="highlight-box reveal delay-2">
-          <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-            <span class="percentage-badge">50%</span>
-            <span style="font-weight: 500;">Nilai Pinjaman = 50% × (Harga Pasar yang Ditentukan Tim Kami)</span>
+<div id="main-content">
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="logo"><div class="logo-mark">₣</div>Free Finance</a>
+      <ul class="nav-links">
+        <li><a href="#how-it-works">Cara Kerja</a></li>
+        <li><a href="#collateral">Jaminan</a></li>
+        <li><a href="#apply">Ajukan</a></li>
+      </ul>
+      <a href="#apply" class="btn btn-primary btn-nav">Ajukan Pinjaman</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge reveal">
+            Ajukan Pinjaman Jaminan Elektronik
+            <span class="location-badge">Semarang Raya</span>
           </div>
-          <p style="font-size: 0.8rem; color: var(--gray-600); margin-top: 10px;">Harga pasar akan dinilai secara profesional oleh tim kami berdasarkan kondisi, merk, dan kelengkapan barang.</p>
+          <h1 class="hero-title reveal delay-1">Ajukan Pinjaman,<br>Kami yang <em>Menilai</em> Harga</h1>
+          <p class="hero-desc reveal delay-2">Anda tentukan barang jaminan dan dana yang dibutuhkan. Tim kami akan menilai harga pasar barang Anda dan menentukan nilai pinjaman sebesar <strong>50% dari harga pasar</strong>.</p>
+          <div class="highlight-box reveal delay-2">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <span class="percentage-badge">50%</span>
+              <span style="font-weight: 500;">Nilai Pinjaman = 50% × (Harga Pasar yang Ditentukan Tim Kami)</span>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--gray-600); margin-top: 10px;">Harga pasar akan dinilai secara profesional oleh tim kami berdasarkan kondisi, merk, dan kelengkapan barang.</p>
+          </div>
+          <div class="hero-actions reveal delay-3">
+            <a href="#apply" class="btn btn-primary">Ajukan Sekarang</a>
+            <a href="#how-it-works" class="btn btn-outline">Lihat Proses</a>
+          </div>
+          <div class="hero-stats reveal delay-4">
+            <div><div class="stat-value">50%</div><div class="stat-label">Dari harga pasar</div></div>
+            <div><div class="stat-value">&lt; 24 Jam</div><div class="stat-label">Proses penilaian</div></div>
+            <div><div class="stat-value">Rp 1 Jt</div><div class="stat-label">Maks pinjaman</div></div>
+          </div>
         </div>
-        <div class="hero-actions reveal delay-3">
-          <a href="#apply" class="btn btn-primary">Ajukan Sekarang</a>
-          <a href="#how-it-works" class="btn btn-outline">Lihat Proses</a>
+        <div class="hero-card reveal delay-2">
+          <div class="card-header">
+            <span class="card-logo">Free Finance</span>
+            <span class="card-status">Contoh Simulasi</span>
+          </div>
+          <div class="card-amount">Rp 500.000</div>
+          <div style="font-size: 0.75rem; color: #6B7280;">Dari jaminan HP dengan harga pasar Rp 1.000.000</div>
+          <div style="margin: 16px 0 8px;">
+            <div style="font-size: 0.7rem; color: var(--gray-500);">Harga pasar (dinilai tim)</div>
+            <div style="font-weight: 600;">Rp 1.000.000</div>
+            <div style="font-size: 0.7rem; color: var(--primary); margin-top: 4px;">50% → Rp 500.000</div>
+          </div>
+          <div class="card-note">*Nilai pinjaman aktual ditentukan setelah penilaian fisik barang oleh tim kami.</div>
         </div>
-        <div class="hero-stats reveal delay-4">
-          <div><div class="stat-value">50%</div><div class="stat-label">Dari harga pasar</div></div>
-          <div><div class="stat-value">&lt; 24 Jam</div><div class="stat-label">Proses penilaian</div></div>
-          <div><div class="stat-value">Rp 1 Jt</div><div class="stat-label">Maks pinjaman</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Proses Pengajuan</div>
+        <h2 class="section-title">4 Langkah Mudah</h2>
+        <p class="section-sub">Ajukan pinjaman, kami yang menilai harga barang Anda secara profesional.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal"><div class="step-number">01</div><div class="step-icon">📋</div><h3>Isi Formulir Pengajuan</h3><p>Lengkapi data diri, informasi barang jaminan, dan dana yang dibutuhkan.</p></div>
+        <div class="step-card reveal delay-1"><div class="step-number">02</div><div class="step-icon">🔍</div><h3>Penilaian Harga Pasar</h3><p>Tim kami menghubungi Anda untuk menilai kondisi fisik & menentukan harga pasar barang.</p></div>
+        <div class="step-card reveal delay-2"><div class="step-number">03</div><div class="step-icon">💰</div><h3>Penawaran Pinjaman</h3><p>Pinjaman ditetapkan 50% dari harga pasar yang telah disepakati. Maksimal Rp 1.000.000.</p></div>
+        <div class="step-card reveal delay-3"><div class="step-number">04</div><div class="step-icon">✅</div><h3>Akad & Pencairan</h3><p>Serah terima jaminan di Semarang, tanda tangan perjanjian, dana cair di hari yang sama.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Valuation Explanation -->
+  <section style="background: white;">
+    <div class="container">
+      <div class="info-card highlight reveal">
+        <div class="info-title"><span>📊</span> Bagaimana Penilaian Harga Pasar?</div>
+        <div class="info-text">
+          Tim Free Finance akan melakukan penilaian berdasarkan:
+          <ul style="margin-top: 12px; margin-left: 20px; color: var(--gray-700);">
+            <li>Kondisi fisik barang (kelayakan, goresan, kerusakan)</li>
+            <li>Kelengkapan aksesoris (charger, box, dokumen)</li>
+            <li>Harga pasar terkini untuk barang sejenis</li>
+            <li>Merk, tipe, dan spesifikasi</li>
+          </ul>
+          <p style="margin-top: 12px;"><strong>Nilai pinjaman = 50% × Harga Pasar (ditentukan tim)</strong> — Maksimal Rp 1.000.000.</p>
         </div>
       </div>
-      <div class="hero-card reveal">
-        <div class="card-header">
-          <span class="card-logo">Free Finance</span>
-          <span class="card-status">Contoh Simulasi</span>
+    </div>
+  </section>
+
+  <!-- Collateral Types -->
+  <section id="collateral">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Barang Jaminan</div>
+        <h2 class="section-title">Elektronik yang Dapat Dijaminkan</h2>
+        <p class="section-sub">Kami menerima berbagai jenis barang elektronik dalam kondisi berfungsi normal.</p>
+      </div>
+      <div class="collateral-grid">
+        <div class="collateral-card"><div class="collateral-icon">📱</div><div class="collateral-name">Smartphone</div><div class="collateral-note">Semua merk</div></div>
+        <div class="collateral-card"><div class="collateral-icon">💻</div><div class="collateral-name">Laptop / Notebook</div><div class="collateral-note">Min. Core i3/Ryzen</div></div>
+        <div class="collateral-card"><div class="collateral-icon">📷</div><div class="collateral-name">Kamera</div><div class="collateral-note">DSLR, mirrorless, action cam</div></div>
+        <div class="collateral-card"><div class="collateral-icon">🎮</div><div class="collateral-name">Console Game</div><div class="collateral-note">PS4, PS5, Nintendo Switch</div></div>
+        <div class="collateral-card"><div class="collateral-icon">⌚</div><div class="collateral-name">Smartwatch</div><div class="collateral-note">Apple Watch, Samsung, Garmin</div></div>
+        <div class="collateral-card"><div class="collateral-icon">📺</div><div class="collateral-name">Smart TV</div><div class="collateral-note">Min. 32 inch</div></div>
+        <div class="collateral-card"><div class="collateral-icon">🎧</div><div class="collateral-name">Audio Premium</div><div class="collateral-note">Headphone, speaker</div></div>
+        <div class="collateral-card"><div class="collateral-icon">📟</div><div class="collateral-name">Tablet / iPad</div><div class="collateral-note">Semua merk</div></div>
+      </div>
+      <div class="info-card reveal">
+        <div class="info-title"><span>📍</span> Layanan Khusus Semarang Raya</div>
+        <div class="info-text">Proses serah terima barang jaminan dilakukan secara langsung di wilayah Semarang, Ungaran, dan sekitarnya. Pastikan Anda berdomisili di area layanan kami.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form -->
+  <section id="apply">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Ajukan Pinjaman</div>
+        <h2 class="section-title">Isi Formulir Pengajuan</h2>
+        <p class="section-sub">Setelah mengirim, tim kami akan menghubungi Anda untuk menilai harga pasar barang dan memberikan penawaran pinjaman.</p>
+      </div>
+      <div class="form-wrapper reveal">
+        <div class="form-row">
+          <div class="form-group"><label>Nama Lengkap *</label><input type="text" id="f-nama" class="form-control" placeholder="Sesuai KTP"></div>
+          <div class="form-group"><label>Nomor WhatsApp *</label><input type="tel" id="f-wa" class="form-control" placeholder="08xxxxxxxxxx"></div>
         </div>
-        <div class="card-amount">Rp 500.000</div>
-        <div style="font-size: 0.75rem; color: #6B7280;">Dari jaminan HP dengan harga pasar Rp 1.000.000</div>
-        <div style="margin: 16px 0 8px;">
-          <div style="font-size: 0.7rem; color: var(--gray-500);">Harga pasar (dinilai tim)</div>
-          <div style="font-weight: 600;">Rp 1.000.000</div>
-          <div style="font-size: 0.7rem; color: var(--primary); margin-top: 4px;">50% → Rp 500.000</div>
+        <div class="form-group-full"><label>Alamat Lengkap (Kecamatan/Kota) *</label><input type="text" id="f-alamat" class="form-control" placeholder="Contoh: Semarang Barat, Kota Semarang"></div>
+        <div class="form-row">
+          <div class="form-group"><label>Barang Jaminan *</label><select id="f-barang" class="form-control" onchange="toggleOther()"><option>Smartphone</option><option>Laptop</option><option>Kamera</option><option>Console Game</option><option>Smartwatch</option><option>Smart TV</option><option>Tablet / iPad</option><option>Audio Premium</option><option value="other">Lainnya</option></select><div id="other-wrap" style="margin-top: 8px; display: none;"><input type="text" id="f-barang-other" class="form-control" placeholder="Sebutkan barang jaminan"></div></div>
+          <div class="form-group"><label>Merk & Tipe *</label><input type="text" id="f-merk" class="form-control" placeholder="Contoh: iPhone 12, Samsung Galaxy S21"></div>
         </div>
-        <div class="card-note">*Nilai pinjaman aktual ditentukan setelah penilaian fisik barang oleh tim kami.</div>
+        <div class="form-row">
+          <div class="form-group"><label>Estimasi Harga (Rp) *</label><input type="number" id="f-harga" class="form-control" placeholder="Perkiraan harga barang Anda saat ini"></div>
+          <div class="form-group"><label>Dana Dibutuhkan (Rp) *</label><input type="number" id="f-dana" class="form-control" placeholder="Maks Rp 1.000.000" oninput="updatePreview()"></div>
+        </div>
+        <div class="form-group-full"><label>Kondisi Barang *</label><select id="f-kondisi" class="form-control"><option>Sangat Baik (mulus, lengkap dengan aksesoris)</option><option>Baik (ada bekas pemakaian minor)</option><option>Cukup (ada kerusakan kecil pada bodi)</option></select></div>
+        <div class="form-group-full"><label>Informasi Tambahan</label><textarea id="f-note" class="form-control" rows="2" placeholder="Ceritakan detail kondisi barang, kelengkapan, atau catatan lain yang perlu diketahui tim penilai..."></textarea></div>
+        
+        <div id="form-preview" class="form-preview">
+          <div class="preview-row"><span>📱 Dana yang diajukan</span><span id="preview-pinjam">—</span></div>
+          <div class="preview-row"><span>⚖️ Estimasi pinjaman (50% dari harga pasar)</span><span id="preview-estimasi">—</span></div>
+          <div class="preview-row total"><span>💳 Perkiraan total pengembalian*</span><span id="preview-total">—</span></div>
+          <div class="preview-note">*Biaya flat Rp 20.000 per Rp 100.000 pinjaman. Nilai aktual setelah penilaian tim.</div>
+        </div>
+        
+        <button class="btn btn-primary btn-wa" onclick="kirimWA()">
+          Kirim Pengajuan via WhatsApp
+        </button>
+        <p class="preview-note" style="margin-top: 16px;">Dengan mengirim formulir, Anda menyetujui tim kami menghubungi untuk penilaian barang dan proses selanjutnya. Layanan khusus Semarang Raya.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- How It Works -->
-<section id="how-it-works">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">Proses Pengajuan</div>
-      <h2 class="section-title">4 Langkah Mudah</h2>
-      <p class="section-sub">Ajukan pinjaman, kami yang menilai harga barang Anda secara profesional.</p>
+  <!-- Features -->
+  <section style="background: white;">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-tag">Keunggulan</div>
+        <h2 class="section-title">Mengapa Memilih Free Finance?</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal"><div class="feature-icon">⚖️</div><h3>Penilaian Profesional</h3><p>Tim kami yang menilai harga pasar barang Anda secara objektif dan transparan.</p></div>
+        <div class="feature-card reveal delay-1"><div class="feature-icon">📊</div><h3>50% Nilai Pinjaman</h3><p>Pinjaman ditetapkan 50% dari harga pasar yang telah disepakati bersama.</p></div>
+        <div class="feature-card reveal delay-2"><div class="feature-icon">💎</div><h3>Biaya Flat & Transparan</h3><p>Rp 20.000 per Rp 100.000 pinjaman. Tidak ada biaya tersembunyi.</p></div>
+        <div class="feature-card reveal delay-3"><div class="feature-icon">🤝</div><h3>Proses Personal</h3><p>Dilayani langsung oleh tim, penilaian dilakukan dengan komunikasi dua arah.</p></div>
+        <div class="feature-card reveal delay-4"><div class="feature-icon">📍</div><h3>Area Semarang Raya</h3><p>Fokus melayani Semarang dan sekitarnya untuk proses tatap muka yang aman.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon">🔒</div><h3>Jaminan Aman</h3><p>Barang disimpan dengan baik dan dikembalikan setelah pinjaman dilunasi.</p></div>
+      </div>
     </div>
-    <div class="steps-grid">
-      <div class="step-card reveal"><div class="step-number">01</div><div class="step-icon">📋</div><h3>Isi Formulir Pengajuan</h3><p>Lengkapi data diri, informasi barang jaminan, dan dana yang dibutuhkan.</p></div>
-      <div class="step-card reveal delay-1"><div class="step-number">02</div><div class="step-icon">🔍</div><h3>Penilaian Harga Pasar</h3><p>Tim kami menghubungi Anda untuk menilai kondisi fisik & menentukan harga pasar barang.</p></div>
-      <div class="step-card reveal delay-2"><div class="step-number">03</div><div class="step-icon">💰</div><h3>Penawaran Pinjaman</h3><p>Pinjaman ditetapkan 50% dari harga pasar yang telah disepakati. Maksimal Rp 1.000.000.</p></div>
-      <div class="step-card reveal delay-3"><div class="step-number">04</div><div class="step-icon">✅</div><h3>Akad & Pencairan</h3><p>Serah terima jaminan di Semarang, tanda tangan perjanjian, dana cair di hari yang sama.</p></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Valuation Explanation -->
-<section style="background: white;">
-  <div class="container">
-    <div class="info-card highlight reveal">
-      <div class="info-title">
-        <span>📊</span> Bagaimana Penilaian Harga Pasar?
+  <!-- Footer with clear contrast -->
+  <footer>
+    <div class="container">
+      <div class="disclaimer">
+        <strong>⚠️ Disclaimer:</strong> Free Finance adalah usaha perorangan bergerak di bidang pinjaman berbasis jaminan barang. Saat ini belum terdaftar di OJK. Penilaian harga pasar dilakukan secara profesional oleh tim kami. Calon nasabah diharapkan memahami seluruh ketentuan sebelum mengajukan pinjaman.
       </div>
-      <div class="info-text">
-        Tim Free Finance akan melakukan penilaian berdasarkan:
-        <ul style="margin-top: 12px; margin-left: 20px; color: var(--gray-700);">
-          <li>Kondisi fisik barang (kelayakan, goresan, kerusakan)</li>
-          <li>Kelengkapan aksesoris (charger, box, dokumen)</li>
-          <li>Harga pasar terkini untuk barang sejenis</li>
-          <li>Merk, tipe, dan spesifikasi</li>
-        </ul>
-        <p style="margin-top: 12px;"><strong>Nilai pinjaman = 50% × Harga Pasar (ditentukan tim)</strong> — Maksimal Rp 1.000.000.</p>
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Free Finance</div>
+          <div class="footer-desc">Pinjaman cepat dengan jaminan elektronik. Tim kami yang menilai harga pasar barang Anda dan menentukan pinjaman 50% dari nilai tersebut. Melayani Semarang Raya.</div>
+        </div>
+        <div class="footer-col">
+          <h4>Informasi</h4>
+          <a href="#how-it-works">Cara Kerja</a>
+          <a href="#collateral">Barang Jaminan</a>
+          <a href="#apply">Ajukan Pinjaman</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontak & Layanan</h4>
+          <span>📍 Semarang Raya</span>
+          <span>📞 +62 889-5885-691</span>
+          <span>💬 WhatsApp: 0889-5885-691</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Free Finance · Semarang, Indonesia. Maksimal pinjaman Rp 1.000.000. Nilai pinjaman = 50% × harga pasar (ditentukan tim).
       </div>
     </div>
-  </div>
-</section>
-
-<!-- Collateral Types -->
-<section id="collateral">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">Barang Jaminan</div>
-      <h2 class="section-title">Elektronik yang Dapat Dijaminkan</h2>
-      <p class="section-sub">Kami menerima berbagai jenis barang elektronik dalam kondisi berfungsi normal.</p>
-    </div>
-    <div class="collateral-grid">
-      <div class="collateral-card"><div class="collateral-icon">📱</div><div class="collateral-name">Smartphone</div><div class="collateral-note">Semua merk</div></div>
-      <div class="collateral-card"><div class="collateral-icon">💻</div><div class="collateral-name">Laptop / Notebook</div><div class="collateral-note">Min. Core i3/Ryzen</div></div>
-      <div class="collateral-card"><div class="collateral-icon">📷</div><div class="collateral-name">Kamera</div><div class="collateral-note">DSLR, mirrorless, action cam</div></div>
-      <div class="collateral-card"><div class="collateral-icon">🎮</div><div class="collateral-name">Console Game</div><div class="collateral-note">PS4, PS5, Nintendo Switch</div></div>
-      <div class="collateral-card"><div class="collateral-icon">⌚</div><div class="collateral-name">Smartwatch</div><div class="collateral-note">Apple Watch, Samsung, Garmin</div></div>
-      <div class="collateral-card"><div class="collateral-icon">📺</div><div class="collateral-name">Smart TV</div><div class="collateral-note">Min. 32 inch</div></div>
-      <div class="collateral-card"><div class="collateral-icon">🎧</div><div class="collateral-name">Audio Premium</div><div class="collateral-note">Headphone, speaker</div></div>
-      <div class="collateral-card"><div class="collateral-icon">📟</div><div class="collateral-name">Tablet / iPad</div><div class="collateral-note">Semua merk</div></div>
-    </div>
-    <div class="info-card reveal">
-      <div class="info-title"><span>📍</span> Layanan Khusus Semarang Raya</div>
-      <div class="info-text">Proses serah terima barang jaminan dilakukan secara langsung di wilayah Semarang, Ungaran, dan sekitarnya. Pastikan Anda berdomisili di area layanan kami.</div>
-    </div>
-  </div>
-</section>
-
-<!-- Application Form -->
-<section id="apply">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">Ajukan Pinjaman</div>
-      <h2 class="section-title">Isi Formulir Pengajuan</h2>
-      <p class="section-sub">Setelah mengirim, tim kami akan menghubungi Anda untuk menilai harga pasar barang dan memberikan penawaran pinjaman.</p>
-    </div>
-    <div class="form-wrapper reveal">
-      <div class="form-row">
-        <div class="form-group"><label>Nama Lengkap *</label><input type="text" id="f-nama" class="form-control" placeholder="Sesuai KTP"></div>
-        <div class="form-group"><label>Nomor WhatsApp *</label><input type="tel" id="f-wa" class="form-control" placeholder="08xxxxxxxxxx"></div>
-      </div>
-      <div class="form-group-full"><label>Alamat Lengkap (Kecamatan/Kota) *</label><input type="text" id="f-alamat" class="form-control" placeholder="Contoh: Semarang Barat, Kota Semarang"></div>
-      <div class="form-row">
-        <div class="form-group"><label>Barang Jaminan *</label><select id="f-barang" class="form-control" onchange="toggleOther()"><option>Smartphone</option><option>Laptop</option><option>Kamera</option><option>Console Game</option><option>Smartwatch</option><option>Smart TV</option><option>Tablet / iPad</option><option>Audio Premium</option><option value="other">Lainnya</option></select><div id="other-wrap" style="margin-top: 8px; display: none;"><input type="text" id="f-barang-other" class="form-control" placeholder="Sebutkan barang jaminan"></div></div>
-        <div class="form-group"><label>Merk & Tipe *</label><input type="text" id="f-merk" class="form-control" placeholder="Contoh: iPhone 12, Samsung Galaxy S21"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label>Estimasi Harga (Rp) *</label><input type="number" id="f-harga" class="form-control" placeholder="Perkiraan harga barang Anda saat ini"></div>
-        <div class="form-group"><label>Dana Dibutuhkan (Rp) *</label><input type="number" id="f-dana" class="form-control" placeholder="Maks Rp 1.000.000" oninput="updatePreview()"></div>
-      </div>
-      <div class="form-group-full"><label>Kondisi Barang *</label><select id="f-kondisi" class="form-control"><option>Sangat Baik (mulus, lengkap dengan aksesoris)</option><option>Baik (ada bekas pemakaian minor)</option><option>Cukup (ada kerusakan kecil pada bodi)</option></select></div>
-      <div class="form-group-full"><label>Informasi Tambahan</label><textarea id="f-note" class="form-control" rows="2" placeholder="Ceritakan detail kondisi barang, kelengkapan, atau catatan lain yang perlu diketahui tim penilai..."></textarea></div>
-      
-      <div id="form-preview" class="form-preview">
-        <div class="preview-row"><span>📱 Dana yang diajukan</span><span id="preview-pinjam">—</span></div>
-        <div class="preview-row"><span>⚖️ Estimasi pinjaman (50% dari harga pasar)</span><span id="preview-estimasi">—</span></div>
-        <div class="preview-row total"><span>💳 Perkiraan total pengembalian*</span><span id="preview-total">—</span></div>
-        <div class="preview-note">*Biaya flat Rp 20.000 per Rp 100.000 pinjaman. Nilai aktual setelah penilaian tim.</div>
-      </div>
-      
-      <button class="btn btn-primary btn-wa" onclick="kirimWA()">
-        Kirim Pengajuan via WhatsApp
-      </button>
-      <p class="preview-note" style="margin-top: 16px;">Dengan mengirim formulir, Anda menyetujui tim kami menghubungi untuk penilaian barang dan proses selanjutnya. Layanan khusus Semarang Raya.</p>
-    </div>
-  </div>
-</section>
-
-<!-- Features -->
-<section style="background: white;">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-tag">Keunggulan</div>
-      <h2 class="section-title">Mengapa Memilih Free Finance?</h2>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card reveal"><div class="feature-icon">⚖️</div><h3>Penilaian Profesional</h3><p>Tim kami yang menilai harga pasar barang Anda secara objektif dan transparan.</p></div>
-      <div class="feature-card reveal delay-1"><div class="feature-icon">📊</div><h3>50% Nilai Pinjaman</h3><p>Pinjaman ditetapkan 50% dari harga pasar yang telah disepakati bersama.</p></div>
-      <div class="feature-card reveal delay-2"><div class="feature-icon">💎</div><h3>Biaya Flat & Transparan</h3><p>Rp 20.000 per Rp 100.000 pinjaman. Tidak ada biaya tersembunyi.</p></div>
-      <div class="feature-card reveal delay-3"><div class="feature-icon">🤝</div><h3>Proses Personal</h3><p>Dilayani langsung oleh tim, penilaian dilakukan dengan komunikasi dua arah.</p></div>
-      <div class="feature-card reveal delay-4"><div class="feature-icon">📍</div><h3>Area Semarang Raya</h3><p>Fokus melayani Semarang dan sekitarnya untuk proses tatap muka yang aman.</p></div>
-      <div class="feature-card reveal"><div class="feature-icon">🔒</div><h3>Jaminan Aman</h3><p>Barang disimpan dengan baik dan dikembalikan setelah pinjaman dilunasi.</p></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <div class="disclaimer">
-      <strong>Disclaimer:</strong> Free Finance adalah usaha perorangan bergerak di bidang pinjaman berbasis jaminan barang. Saat ini belum terdaftar di OJK. Penilaian harga pasar dilakukan secara profesional oleh tim kami. Calon nasabah diharapkan memahami seluruh ketentuan sebelum mengajukan pinjaman.
-    </div>
-    <div class="footer-grid">
-      <div><div class="footer-logo">Free Finance</div><div class="footer-desc">Pinjaman cepat dengan jaminan elektronik. Tim kami yang menilai harga pasar barang Anda dan menentukan pinjaman 50% dari nilai tersebut. Melayani Semarang Raya.</div></div>
-      <div class="footer-col"><h4>Informasi</h4><a href="#how-it-works">Cara Kerja</a><a href="#collateral">Barang Jaminan</a><a href="#apply">Ajukan Pinjaman</a></div>
-      <div class="footer-col"><h4>Kontak</h4><span style="display: block; font-size: 0.8rem; margin-bottom: 8px;">📍 Semarang Raya</span><span style="display: block; font-size: 0.8rem;">📞 +62 889-5885-691</span></div>
-    </div>
-    <div class="footer-bottom">© 2025 Free Finance · Semarang, Indonesia. Maksimal pinjaman Rp 1.000.000. Nilai pinjaman = 50% × harga pasar (ditentukan tim).</div>
-  </div>
-</footer>
+  </footer>
+</div>
 
 <script>
+  // Splash Particles
+  (function() {
+    const container = document.getElementById('splashParticles');
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('div');
+      p.className = 'sp';
+      const size = Math.random() * 70 + 20;
+      p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random() * 100}%;bottom:${Math.random() * 20 - 15}%;animation-duration:${Math.random() * 8 + 5}s;animation-delay:${Math.random() * 4}s;`;
+      container.appendChild(p);
+    }
+    setTimeout(() => {
+      document.getElementById('splash').classList.add('hide');
+      setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => {
+          const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+          }, { threshold: 0.1 });
+          observer.observe(el);
+        });
+      }, 200);
+    }, 2500);
+  })();
+
   const MAX_LOAN = 1000000;
   const FEE_RATE = 20000;
-  
   function formatRupiah(val) { return 'Rp ' + Math.round(val).toLocaleString('id-ID'); }
   function calcFee(loan) { return Math.ceil(loan / 100000) * FEE_RATE; }
-  
+
   function updatePreview() {
     let dana = parseFloat(document.getElementById('f-dana').value);
     let estimasiHarga = parseFloat(document.getElementById('f-harga').value);
     let previewDiv = document.getElementById('form-preview');
-    
-    if (!dana || dana <= 0) {
-      previewDiv.style.display = 'none';
-      return;
-    }
-    
+    if (!dana || dana <= 0) { previewDiv.style.display = 'none'; return; }
     let capped = Math.min(dana, MAX_LOAN);
     let biaya = calcFee(capped);
     let estimasiPinjaman50 = estimasiHarga ? Math.min(estimasiHarga * 0.5, MAX_LOAN) : 0;
-    
     document.getElementById('preview-pinjam').innerText = formatRupiah(capped);
     document.getElementById('preview-estimasi').innerHTML = estimasiHarga ? formatRupiah(estimasiPinjaman50) + ' <span style="font-size:0.65rem;">(50% dari estimasi Anda)</span>' : 'Menunggu input harga';
     document.getElementById('preview-total').innerText = formatRupiah(capped + biaya);
     previewDiv.style.display = 'block';
   }
-  
+
   function toggleOther() {
     let sel = document.getElementById('f-barang');
     let otherWrap = document.getElementById('other-wrap');
     otherWrap.style.display = sel.value === 'other' ? 'block' : 'none';
   }
-  
+
   const WA_NUMBER = '628895885691';
-  
+
   function kirimWA() {
     let nama = document.getElementById('f-nama').value.trim();
     let wa = document.getElementById('f-wa').value.trim();
@@ -745,19 +907,19 @@
     let danaDiajukan = document.getElementById('f-dana').value;
     let kondisi = document.getElementById('f-kondisi').value;
     let note = document.getElementById('f-note').value.trim();
-    
+
     if (!nama || !wa || !alamat || !barang || !merk || !estimasiHarga || !danaDiajukan || !kondisi) {
       alert('Harap lengkapi semua kolom yang wajib diisi (*).');
       return;
     }
-    
+
     let danaAngka = Math.min(parseFloat(danaDiajukan), MAX_LOAN);
     let estimasiHargaAngka = parseFloat(estimasiHarga);
     let estimasiPinjaman50 = Math.min(estimasiHargaAngka * 0.5, MAX_LOAN);
     let biaya = calcFee(danaAngka);
     let total = danaAngka + biaya;
-    
-    let msg = `*PENGAJUAN PINJAMAN - FREE FINANCE*\n\n` +
+
+    let msg = `*PENGAJUAN PINJAMAN - FREE FINANCE (SEMARANG)*\n\n` +
       `*DATA PEMOHON*\n` +
       `Nama: ${nama}\n` +
       `WhatsApp: ${wa}\n` +
@@ -768,24 +930,17 @@
       `Estimasi Harga (dari pemohon): Rp ${parseInt(estimasiHarga).toLocaleString('id-ID')}\n` +
       `Estimasi Pinjaman 50%: Rp ${Math.round(estimasiPinjaman50).toLocaleString('id-ID')}\n` +
       `Kondisi Barang: ${kondisi}\n` +
-      `Dana Diajukan: Rp ${Math.round(danaAngka).toLocaleString('id-ID')}\n\n` +
-      `*INFORMASI TAMBAHAN*\n` +
-      `${note || '-'}\n\n` +
-      `---\n` +
+      `Dana Diajukan: Rp ${Math.round(danaAngka).toLocaleString('id-ID')}\n` +
+      `Biaya Pengembalian (estimasi): Rp ${biaya.toLocaleString('id-ID')}\n` +
+      `Total Estimasi Kembali: Rp ${Math.round(total).toLocaleString('id-ID')}\n\n` +
+      `*INFORMASI TAMBAHAN*\n${note || '-'}\n\n` +
       `Mohon dilakukan penilaian harga pasar dan konfirmasi penawaran pinjaman. Terima kasih.`;
-    
+
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   }
-  
-  // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-  
-  // Trigger preview on load if any value exists
+
   document.getElementById('f-harga').addEventListener('input', updatePreview);
+  document.getElementById('f-dana').addEventListener('input', updatePreview);
 </script>
 </body>
 </html>
