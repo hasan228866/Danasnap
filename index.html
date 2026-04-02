@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#0B5E42">
 <title>DanaSnap | Pinjaman Jaminan Elektronik</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <style>
   * {
     margin: 0;
@@ -293,6 +294,7 @@
     color: var(--primary);
     margin-bottom: 24px;
   }
+  .hero-badge i { font-size: 0.7rem; margin-right: 4px; }
   .location-badge {
     background: #EFF6FF;
     color: #1E40AF;
@@ -400,6 +402,7 @@
     padding: 28px 20px;
     border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
+    text-align: center;
   }
   .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); border-color: var(--primary-light); }
   .step-number {
@@ -409,7 +412,7 @@
     margin-bottom: 16px;
   }
   .step-icon {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 16px;
     color: var(--primary);
   }
@@ -437,6 +440,7 @@
     align-items: center;
     gap: 8px;
   }
+  .info-title i { color: var(--primary); font-size: 1.1rem; }
   .info-text { font-size: 0.875rem; color: var(--gray-700); line-height: 1.6; }
   
   /* Collateral Grid */
@@ -455,7 +459,7 @@
     transition: all 0.2s;
   }
   .collateral-card:hover { border-color: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-card); }
-  .collateral-icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .collateral-icon { font-size: 1.6rem; margin-bottom: 10px; color: var(--primary); }
   .collateral-name { font-weight: 600; font-size: 0.85rem; margin-bottom: 6px; }
   .collateral-note { font-size: 0.65rem; color: var(--gray-500); margin-top: 6px; }
   @media (max-width: 768px) { .collateral-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -558,9 +562,10 @@
     padding: 28px;
     border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
+    text-align: center;
   }
   .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); border-color: var(--primary-light); }
-  .feature-icon { font-size: 1.5rem; margin-bottom: 16px; color: var(--primary); }
+  .feature-icon { font-size: 1.6rem; margin-bottom: 16px; color: var(--primary); }
   .feature-card h3 { font-size: 1rem; margin-bottom: 8px; }
   .feature-card p { font-size: 0.875rem; color: var(--gray-600); line-height: 1.5; }
   @media (max-width: 768px) { .features-grid { grid-template-columns: 1fr; gap: 16px; } }
@@ -606,6 +611,7 @@
     color: var(--gray-400);
     margin-bottom: 8px;
   }
+  .footer-col span i { width: 20px; margin-right: 8px; color: var(--accent); }
   .footer-bottom {
     border-top: 1px solid var(--gray-800);
     padding-top: 28px;
@@ -648,7 +654,7 @@
     <div class="nav-inner">
       <a href="#" class="logo"><div class="logo-mark">DS</div>DanaSnap</a>
       <ul class="nav-links">
-        <li><a href="#how-it-works">Cara Kerja</a></li>
+        <li><a href="#how-it-works">Proses</a></li>
         <li><a href="#collateral">Jaminan</a></li>
         <li><a href="#apply">Ajukan</a></li>
       </ul>
@@ -662,8 +668,8 @@
       <div class="hero-grid">
         <div>
           <div class="hero-badge reveal">
-            Pinjaman Jaminan Elektronik
-            <span class="location-badge">Semarang Raya</span>
+            <i class="fas fa-chart-line"></i> Pinjaman Jaminan Elektronik
+            <span class="location-badge"><i class="fas fa-map-marker-alt"></i> Semarang Raya</span>
           </div>
           <h1 class="hero-title reveal delay-1">Ajukan Pinjaman,<br>Kami yang <em>Menilai</em> Jaminan</h1>
           <p class="hero-desc reveal delay-2">Cukup tentukan jenis barang jaminan dan jumlah pinjaman yang Anda butuhkan. Tim kami akan menilai barang Anda dan menentukan kelayakan pinjaman.</p>
@@ -711,10 +717,10 @@
         <p class="section-sub">Ajukan pinjaman, kami yang menilai barang Anda secara profesional.</p>
       </div>
       <div class="steps-grid">
-        <div class="step-card reveal"><div class="step-number">01</div><div class="step-icon">📋</div><h3>Isi Formulir Pengajuan</h3><p>Lengkapi data diri, jenis barang jaminan, dan nominal pinjaman yang diinginkan.</p></div>
-        <div class="step-card reveal delay-1"><div class="step-number">02</div><div class="step-icon">🔍</div><h3>Penilaian Jaminan</h3><p>Tim kami menghubungi untuk menilai kondisi fisik barang dan menentukan harga pasar.</p></div>
-        <div class="step-card reveal delay-2"><div class="step-number">03</div><div class="step-icon">💰</div><h3>Konfirmasi & Persetujuan</h3><p>Pinjaman ditetapkan 60% dari harga pasar yang telah disepakati. Maksimal Rp 1.000.000.</p></div>
-        <div class="step-card reveal delay-3"><div class="step-number">04</div><div class="step-icon">✅</div><h3>Akad & Pencairan</h3><p>Serah terima jaminan di Semarang, akad perjanjian, dana cair di hari yang sama.</p></div>
+        <div class="step-card reveal"><div class="step-number">01</div><div class="step-icon"><i class="fas fa-file-alt"></i></div><h3>Isi Formulir</h3><p>Data diri, jenis barang jaminan, dan nominal pinjaman yang diinginkan.</p></div>
+        <div class="step-card reveal delay-1"><div class="step-number">02</div><div class="step-icon"><i class="fas fa-search"></i></div><h3>Penilaian Jaminan</h3><p>Tim menghubungi untuk menilai kondisi fisik dan harga pasar barang.</p></div>
+        <div class="step-card reveal delay-2"><div class="step-number">03</div><div class="step-icon"><i class="fas fa-handshake"></i></div><h3>Konfirmasi</h3><p>Pinjaman ditetapkan 60% dari harga pasar yang disepakati. Maks Rp 1.000.000.</p></div>
+        <div class="step-card reveal delay-3"><div class="step-number">04</div><div class="step-icon"><i class="fas fa-money-bill-wave"></i></div><h3>Akad & Pencairan</h3><p>Serah terima jaminan di Semarang, akad perjanjian, dana cair.</p></div>
       </div>
     </div>
   </section>
@@ -723,7 +729,7 @@
   <section style="background: white;">
     <div class="container">
       <div class="info-card highlight reveal">
-        <div class="info-title"><span>📊</span> Mekanisme Penilaian Jaminan</div>
+        <div class="info-title"><i class="fas fa-clipboard-list"></i> Mekanisme Penilaian Jaminan</div>
         <div class="info-text">
           Tim DanaSnap akan melakukan penilaian berdasarkan:
           <ul style="margin-top: 12px; margin-left: 20px; color: var(--gray-700);">
@@ -747,17 +753,17 @@
         <p class="section-sub">Kami menerima berbagai jenis barang elektronik dalam kondisi berfungsi normal.</p>
       </div>
       <div class="collateral-grid">
-        <div class="collateral-card"><div class="collateral-icon">📱</div><div class="collateral-name">Smartphone</div><div class="collateral-note">Semua merk</div></div>
-        <div class="collateral-card"><div class="collateral-icon">💻</div><div class="collateral-name">Laptop</div><div class="collateral-note">Min. Core i3 / Ryzen 3</div></div>
-        <div class="collateral-card"><div class="collateral-icon">📷</div><div class="collateral-name">Kamera</div><div class="collateral-note">DSLR, mirrorless, action cam</div></div>
-        <div class="collateral-card"><div class="collateral-icon">🎮</div><div class="collateral-name">Console Game</div><div class="collateral-note">PS4, PS5, Nintendo Switch</div></div>
-        <div class="collateral-card"><div class="collateral-icon">⌚</div><div class="collateral-name">Smartwatch</div><div class="collateral-note">Apple Watch, Samsung, Garmin</div></div>
-        <div class="collateral-card"><div class="collateral-icon">📺</div><div class="collateral-name">Smart TV</div><div class="collateral-note">Min. 32 inch</div></div>
-        <div class="collateral-card"><div class="collateral-icon">🎧</div><div class="collateral-name">Audio Premium</div><div class="collateral-note">Headphone, speaker</div></div>
-        <div class="collateral-card"><div class="collateral-icon">📟</div><div class="collateral-name">Tablet / iPad</div><div class="collateral-note">Semua merk</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-mobile-alt"></i></div><div class="collateral-name">Smartphone</div><div class="collateral-note">Semua merk</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-laptop"></i></div><div class="collateral-name">Laptop</div><div class="collateral-note">Min. Core i3 / Ryzen 3</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-camera"></i></div><div class="collateral-name">Kamera</div><div class="collateral-note">DSLR, mirrorless, action cam</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-gamepad"></i></div><div class="collateral-name">Console Game</div><div class="collateral-note">PS4, PS5, Nintendo Switch</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-clock"></i></div><div class="collateral-name">Smartwatch</div><div class="collateral-note">Apple Watch, Samsung, Garmin</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-tv"></i></div><div class="collateral-name">Smart TV</div><div class="collateral-note">Min. 32 inch</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-headphones"></i></div><div class="collateral-name">Audio Premium</div><div class="collateral-note">Headphone, speaker</div></div>
+        <div class="collateral-card"><div class="collateral-icon"><i class="fas fa-tablet-alt"></i></div><div class="collateral-name">Tablet / iPad</div><div class="collateral-note">Semua merk</div></div>
       </div>
       <div class="info-card reveal">
-        <div class="info-title"><span>📍</span> Layanan Khusus Semarang Raya</div>
+        <div class="info-title"><i class="fas fa-location-dot"></i> Layanan Khusus Semarang Raya</div>
         <div class="info-text">Proses serah terima barang jaminan dilakukan secara langsung di wilayah Semarang, Ungaran, dan sekitarnya. Pastikan Anda berdomisili di area layanan kami.</div>
       </div>
     </div>
@@ -793,7 +799,7 @@
         </div>
         
         <button class="btn btn-primary btn-submit" onclick="kirimWA()">
-          Kirim Pengajuan via WhatsApp
+          <i class="fab fa-whatsapp"></i> Kirim Pengajuan via WhatsApp
         </button>
         <p class="preview-note" style="margin-top: 16px;">Dengan mengirim formulir, Anda menyetujui tim kami menghubungi untuk penilaian barang jaminan dan proses selanjutnya. Layanan khusus Semarang Raya.</p>
       </div>
@@ -808,12 +814,12 @@
         <h2 class="section-title">Mengapa Memilih DanaSnap?</h2>
       </div>
       <div class="features-grid">
-        <div class="feature-card reveal"><div class="feature-icon">⚖️</div><h3>Penilaian Profesional</h3><p>Tim kami yang menilai harga pasar barang Anda secara objektif dan transparan.</p></div>
-        <div class="feature-card reveal delay-1"><div class="feature-icon">📊</div><h3>60% Nilai Pinjaman</h3><p>Pinjaman ditetapkan 60% dari harga pasar yang telah disepakati bersama.</p></div>
-        <div class="feature-card reveal delay-2"><div class="feature-icon">💎</div><h3>Biaya Flat & Transparan</h3><p>Rp 20.000 per Rp 100.000 pinjaman. Tidak ada biaya tersembunyi.</p></div>
-        <div class="feature-card reveal delay-3"><div class="feature-icon">🤝</div><h3>Proses Personal</h3><p>Dilayani langsung oleh tim, penilaian dilakukan dengan komunikasi dua arah.</p></div>
-        <div class="feature-card reveal delay-4"><div class="feature-icon">📍</div><h3>Area Semarang Raya</h3><p>Fokus melayani Semarang dan sekitarnya untuk proses tatap muka yang aman.</p></div>
-        <div class="feature-card reveal"><div class="feature-icon">🔒</div><h3>Jaminan Aman</h3><p>Barang disimpan dengan baik dan dikembalikan setelah pinjaman dilunasi.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-balance-scale"></i></div><h3>Penilaian Profesional</h3><p>Tim kami yang menilai harga pasar barang Anda secara objektif dan transparan.</p></div>
+        <div class="feature-card reveal delay-1"><div class="feature-icon"><i class="fas fa-chart-simple"></i></div><h3>60% Nilai Pinjaman</h3><p>Pinjaman ditetapkan 60% dari harga pasar yang telah disepakati bersama.</p></div>
+        <div class="feature-card reveal delay-2"><div class="feature-icon"><i class="fas fa-gem"></i></div><h3>Biaya Flat & Transparan</h3><p>Rp 20.000 per Rp 100.000 pinjaman. Tidak ada biaya tersembunyi.</p></div>
+        <div class="feature-card reveal delay-3"><div class="feature-icon"><i class="fas fa-handshake"></i></div><h3>Proses Personal</h3><p>Dilayani langsung oleh tim, penilaian dilakukan dengan komunikasi dua arah.</p></div>
+        <div class="feature-card reveal delay-4"><div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div><h3>Area Semarang Raya</h3><p>Fokus melayani Semarang dan sekitarnya untuk proses tatap muka yang aman.</p></div>
+        <div class="feature-card reveal"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Jaminan Aman</h3><p>Barang disimpan dengan baik dan dikembalikan setelah pinjaman dilunasi.</p></div>
       </div>
     </div>
   </section>
@@ -822,7 +828,7 @@
   <footer>
     <div class="container">
       <div class="disclaimer">
-        <strong>Disclaimer:</strong> DanaSnap adalah usaha perorangan bergerak di bidang pinjaman berbasis jaminan barang. Saat ini belum terdaftar di OJK. Penilaian harga pasar dilakukan secara profesional oleh tim kami. Calon nasabah diharapkan memahami seluruh ketentuan sebelum mengajukan pinjaman.
+        <i class="fas fa-info-circle"></i> <strong>Disclaimer:</strong> DanaSnap adalah usaha perorangan bergerak di bidang pinjaman berbasis jaminan barang. Saat ini belum terdaftar di OJK. Penilaian harga pasar dilakukan secara profesional oleh tim kami. Calon nasabah diharapkan memahami seluruh ketentuan sebelum mengajukan pinjaman.
       </div>
       <div class="footer-grid">
         <div>
@@ -837,9 +843,9 @@
         </div>
         <div class="footer-col">
           <h4>Kontak & Layanan</h4>
-          <span>📍 Semarang Raya</span>
-          <span>📞 +62 889-5885-691</span>
-          <span>💬 WhatsApp: 0889-5885-691</span>
+          <span><i class="fas fa-map-marker-alt"></i> Semarang Raya</span>
+          <span><i class="fas fa-phone-alt"></i> +62 889-5885-691</span>
+          <span><i class="fab fa-whatsapp"></i> WhatsApp: 0889-5885-691</span>
         </div>
       </div>
       <div class="footer-bottom">
